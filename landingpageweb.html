@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Soffergo - The new app reinventing secondhand shopping with a premium experience.">
+    <title>Soffergo - Coming Soon</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff;
+            color: #222222;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .main {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 56px;
+        }
+
+        .logo {
+            height: 56px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .brand-soffer {
+            color: #0C6AE6;
+        }
+
+        .brand-go {
+            color: #091970;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .headline {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: #000000;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #0968E5 0%, #0050B3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 20px;
+            font-weight: 500;
+            color: #000000;
+            text-align: center;
+            line-height: 1.5;
+            margin-bottom: 48px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            padding: 12px;
+            background: #F7F7F7;
+            border-radius: 12px;
+            color: #000000;
+            flex-shrink: 0;
+        }
+
+        .feature-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .feature-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            font-weight: 400;
+            color: #6B6B6B;
+            line-height: 1.4;
+        }
+
+        .launch-pill {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #0968E5 0%, #0050B3 100%);
+            border-radius: 12px;
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.2);
+            }
+        }
+
+        .launch-text {
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .community-note {
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        .community-text {
+            font-size: 14px;
+            font-weight: 400;
+            color: #6B6B6B;
+            margin-bottom: 6px;
+        }
+
+        .community-highlight {
+            font-size: 14px;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        @media (min-width: 540px) {
+            .features {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .main {
+                padding: 80px 32px;
+            }
+
+            .logo-container {
+                margin-bottom: 64px;
+            }
+
+            .logo {
+                height: 64px;
+            }
+
+            .logo-text {
+                font-size: 36px;
+            }
+
+            .content {
+                max-width: 640px;
+            }
+
+            .headline {
+                font-size: 48px;
+                margin-bottom: 56px;
+            }
+
+            .tagline {
+                font-size: 22px;
+            }
+
+            .features {
+                gap: 28px;
+                margin-bottom: 56px;
+            }
+
+            .feature-title {
+                font-size: 17px;
+            }
+
+            .feature-desc {
+                font-size: 15px;
+            }
+
+            .launch-pill {
+                padding: 18px 32px;
+                border-radius: 14px;
+            }
+
+            .launch-text {
+                font-size: 16px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .logo {
+                height: 72px;
+            }
+
+            .logo-text {
+                font-size: 40px;
+            }
+
+            .headline {
+                font-size: 56px;
+            }
+
+            .feature-icon {
+                width: 52px;
+                height: 52px;
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+        <div class="logo-container">
+            <img src="Logo.png" alt="Soffergo" class="logo">
+            <span class="logo-text"><span class="brand-soffer">Soffer</span><span class="brand-go">go</span></span>
+        </div>
+
+        <div class="content">
+            <h1 class="headline">
+                We're fine-tuning something<br>
+                <span class="highlight">special</span> for you.
+            </h1>
+
+            <p class="tagline">With Soffergo, enjoy an all-in-one app that simplifies secondhand shopping.</p>
+
+            <div class="features">
+                <div class="feature">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01"/>
+                    </svg>
+                    <div class="feature-content">
+                        <span class="feature-title">Buy, rent or donate</span>
+                        <span class="feature-desc">One platform, endless possibilities</span>
+                    </div>
+                </div>
+                <div class="feature">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <div class="feature-content">
+                        <span class="feature-title">Verified identity</span>
+                        <span class="feature-desc">Trust built into every exchange</span>
+                    </div>
+                </div>
+                <div class="feature">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                    </svg>
+                    <div class="feature-content">
+                        <span class="feature-title">Premium experience</span>
+                        <span class="feature-desc">Designed for simplicity</span>
+                    </div>
+                </div>
+                <div class="feature">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                    </svg>
+                    <div class="feature-content">
+                        <span class="feature-title">Data security</span>
+                        <span class="feature-desc">Your data, fully protected and never shared</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="launch-pill">
+                <span class="pulse"></span>
+                <span class="launch-text">Launching worldwide soon</span>
+            </div>
+
+            <div class="community-note">
+                <p class="community-text">We'll notify our community the moment our mobile app goes live.</p>
+                <p class="community-highlight">Get ready — this will change everything.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

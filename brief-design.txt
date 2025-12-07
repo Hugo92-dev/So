@@ -1,0 +1,124 @@
+# Brief Design UI/UX - Soffergo Mobile App
+
+## 1. Identité de marque
+
+### Couleurs
+| Nom | Hex | Usage |
+|-----|-----|-------|
+| Bleu Principal | `#0968E5` | CTA, éléments actifs, liens |
+| Bleu Navy | `#091970` | Accents, textes importants |
+| Gradient Principal | `linear-gradient(135deg, #0968E5 0%, #0050B3 100%)` | Boutons principaux, highlights |
+| Blanc | `#FFFFFF` | Background principal |
+| Gris clair | `#F7F7F7` | Backgrounds secondaires, cards |
+| Gris texte | `#6B6B6B` | Textes secondaires |
+| Noir | `#222222` | Textes principaux |
+
+### Typographie
+- **Font principale** : Plus Jakarta Sans
+- **Poids utilisés** : 400 (Regular), 500 (Medium), 600 (SemiBold), 700 (Bold)
+
+---
+
+## 2. Direction artistique
+
+### Inspiration principale
+**Airbnb** - Design épuré, moderne, fonctionnel
+
+### Principes clés
+1. **Minimalisme** : Beaucoup de blanc, espaces généreux
+2. **Clarté** : Hiérarchie visuelle forte, lisibilité maximale
+3. **Premium** : Finitions soignées, micro-interactions subtiles
+4. **Confiance** : Design professionnel qui inspire la sécurité
+
+### Style visuel
+- Coins arrondis (12-16px pour cards, 8-12px pour boutons)
+- Ombres subtiles et légères
+- Icônes linéaires (stroke 2px)
+- Photos de haute qualité avec overlay si nécessaire
+- Animations fluides et discrètes
+
+---
+
+## 3. Produit Soffergo
+
+### Positionnement
+App mobile tout-en-un pour la seconde main avec une expérience premium.
+
+### Fonctionnalités clés
+- **Acheter** des articles de seconde main
+- **Louer** des objets temporairement
+- **Donner** pour une économie circulaire
+- **Identité vérifiée** pour la confiance
+- **Sécurité des données** garantie
+
+### Cible
+Utilisateurs recherchant une expérience seconde main simple, sûre et premium.
+
+---
+
+## 4. Spécifications techniques (pour le dev)
+
+### Espacements (système 8px)
+- `xs` : 4px
+- `sm` : 8px
+- `md` : 16px
+- `lg` : 24px
+- `xl` : 32px
+- `2xl` : 48px
+
+### Border radius
+- Boutons : 12px
+- Cards : 16px
+- Inputs : 12px
+- Tags/Pills : 20px (full rounded)
+- Avatars : 50% (cercle)
+
+### Tailles de texte
+| Élément | Taille | Poids | Line-height |
+|---------|--------|-------|-------------|
+| H1 | 28px | 700 | 1.2 |
+| H2 | 24px | 700 | 1.25 |
+| H3 | 20px | 600 | 1.3 |
+| Body | 16px | 400 | 1.5 |
+| Body Small | 14px | 400 | 1.4 |
+| Caption | 12px | 400 | 1.4 |
+| Button | 16px | 600 | 1 |
+
+### Ombres
+- Card : `0 2px 8px rgba(0, 0, 0, 0.08)`
+- Card hover : `0 4px 16px rgba(0, 0, 0, 0.12)`
+- Modal : `0 8px 32px rgba(0, 0, 0, 0.16)`
+
+---
+
+## 5. Process de travail
+
+### Étapes
+1. Hugo fournit une capture de l'écran existant
+2. Claude génère une maquette SVG optimisée Figma
+3. Hugo valide ou demande des modifications
+4. Passage à l'écran suivant
+
+### Livrables par écran
+- Fichier SVG collable dans Figma
+- Toutes les propriétés (couleurs, tailles, espacements) documentées
+- Composants réutilisables identifiés
+
+---
+
+## 6. Écrans à designer (à compléter)
+
+- [ ] Splash screen / Onboarding
+- [ ] Login / Inscription
+- [ ] Home / Feed
+- [ ] Recherche
+- [ ] Fiche produit
+- [ ] Profil utilisateur
+- [ ] Messagerie
+- [ ] Panier / Checkout
+- [ ] Paramètres
+- [ ] ...
+
+---
+
+**Status** : En attente de validation par Hugo
