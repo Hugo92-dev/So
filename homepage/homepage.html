@@ -2300,16 +2300,19 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            gap: 6px;
+            flex-direction: column;
         }
 
         .conversation-product-action button {
-            padding: 10px 16px;
-            border-radius: 10px;
-            font-size: 13px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
             font-weight: 600;
             border: none;
             cursor: pointer;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
         .conversation-product-action button:hover {
@@ -2333,6 +2336,22 @@
         .conversation-product-action button.don {
             background: #34C759;
             color: #FFFFFF;
+        }
+
+        .conversation-product-action button.offer-btn {
+            background: #FFFFFF;
+            color: #0968E5;
+            border: 1.5px solid #0968E5;
+            padding: 6px 10px;
+            font-size: 11px;
+        }
+
+        .conversation-product-action button.reservation-btn {
+            background: #FFFFFF;
+            color: #FF9500;
+            border: 1.5px solid #FF9500;
+            padding: 6px 10px;
+            font-size: 11px;
         }
 
         /* Messages Area */
@@ -2409,6 +2428,1175 @@
         .message-bubble-wrapper.sent .message-time-inline {
             text-align: right;
             color: rgba(255,255,255,0.7);
+        }
+
+        /* Offer Message - Clean Apple/Airbnb Style */
+        .offer-message {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 16px;
+            margin: 16px 0;
+        }
+
+        .offer-message-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .offer-message-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #8E8E93;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .offer-message-amount {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .offer-message-price {
+            font-size: 40px;
+            font-weight: 600;
+            color: #1C1C1E;
+            letter-spacing: -1px;
+        }
+
+        .offer-message-detail {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+            font-size: 14px;
+            color: #8E8E93;
+        }
+
+        .offer-message-detail .discount {
+            color: #1C1C1E;
+            font-weight: 500;
+        }
+
+        .offer-message-detail .original {
+            text-decoration: line-through;
+        }
+
+        .offer-message-divider {
+            height: 1px;
+            background: #F2F2F7;
+            margin: 16px 0;
+        }
+
+        .offer-message-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .offer-action-btn {
+            flex: 1;
+            padding: 14px 12px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .offer-action-btn:active {
+            transform: scale(0.97);
+        }
+
+        .offer-action-btn.decline {
+            background: #F2F2F7;
+            color: #1C1C1E;
+        }
+
+        .offer-action-btn.counter {
+            background: #F2F2F7;
+            color: #1C1C1E;
+        }
+
+        .offer-action-btn.accept {
+            background: #1C1C1E;
+            color: #FFFFFF;
+        }
+
+        .offer-message-status {
+            text-align: center;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .offer-message-status.accepted {
+            background: #F2F2F7;
+            color: #1C1C1E;
+        }
+
+        .offer-message-status.declined {
+            background: #F2F2F7;
+            color: #8E8E93;
+        }
+
+        .offer-message-status.countered {
+            background: #F2F2F7;
+            color: #1C1C1E;
+        }
+
+        /* Reservation Button */
+        .product-detail-reservation-btn {
+            flex: 1;
+            padding: 14px 12px;
+            background: #FFFFFF;
+            border: 2px solid #FF9500;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #FF9500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .product-detail-reservation-btn:active {
+            transform: scale(0.97);
+            background: #FFF9F0;
+        }
+
+        /* Reservation Modal */
+        .reservation-modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+            z-index: 3500;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .reservation-modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .reservation-modal {
+            background: #FFFFFF;
+            border-radius: 24px 24px 0 0;
+            width: 100%;
+            max-width: 100%;
+            padding: 24px;
+            padding-bottom: calc(24px + env(safe-area-inset-bottom, 20px));
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .reservation-modal-overlay.visible .reservation-modal {
+            transform: translateY(0);
+        }
+
+        .reservation-modal-handle {
+            width: 36px;
+            height: 4px;
+            background: #E5E5EA;
+            border-radius: 2px;
+            margin: 0 auto 20px;
+        }
+
+        .reservation-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .reservation-modal-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1C1C1E;
+        }
+
+        .reservation-modal-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #F2F2F7;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reservation-modal-close svg {
+            width: 16px;
+            height: 16px;
+            color: #8E8E93;
+        }
+
+        .reservation-product-preview {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            background: #F9F9F9;
+            border-radius: 14px;
+            margin-bottom: 20px;
+        }
+
+        .reservation-product-preview img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .reservation-product-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .reservation-product-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1C1C1E;
+            margin-bottom: 4px;
+        }
+
+        .reservation-product-price {
+            font-size: 14px;
+            color: #FF9500;
+            font-weight: 600;
+        }
+
+        .reservation-dates-section {
+            margin-bottom: 20px;
+        }
+
+        .reservation-section-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1C1C1E;
+            margin-bottom: 12px;
+        }
+
+        .reservation-dates-inputs {
+            display: flex;
+            gap: 12px;
+        }
+
+        .reservation-date-input {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .reservation-date-input label {
+            font-size: 12px;
+            color: #8E8E93;
+            font-weight: 500;
+        }
+
+        .reservation-date-input input {
+            padding: 14px;
+            border: 2px solid #E5E5EA;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #1C1C1E;
+            transition: border-color 0.2s ease;
+        }
+
+        .reservation-date-input input:focus {
+            outline: none;
+            border-color: #FF9500;
+        }
+
+        .reservation-summary {
+            background: #F9F9F9;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .reservation-summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .reservation-summary-row:not(:last-child) {
+            border-bottom: 1px solid #E5E5EA;
+        }
+
+        .reservation-summary-label {
+            font-size: 14px;
+            color: #8E8E93;
+        }
+
+        .reservation-summary-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1C1C1E;
+        }
+
+        .reservation-summary-row.total .reservation-summary-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1C1C1E;
+        }
+
+        .reservation-summary-row.total .reservation-summary-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #FF9500;
+        }
+
+        .reservation-caution-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px;
+            background: #FFF9F0;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .reservation-caution-info svg {
+            width: 20px;
+            height: 20px;
+            color: #FF9500;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .reservation-caution-text {
+            font-size: 13px;
+            color: #1C1C1E;
+            line-height: 1.4;
+        }
+
+        .reservation-caution-text strong {
+            color: #FF9500;
+        }
+
+        .reservation-submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: #1C1C1E;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .reservation-submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .reservation-submit-btn:disabled {
+            background: #E5E5EA;
+            color: #8E8E93;
+            cursor: not-allowed;
+        }
+
+        /* Reservation Message - Same style as Offer */
+        .reservation-message {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 16px;
+            margin: 16px 0;
+        }
+
+        .reservation-message-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .reservation-message-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #8E8E93;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .reservation-message-dates {
+            text-align: center;
+            padding: 16px 0;
+        }
+
+        .reservation-message-period {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1C1C1E;
+            margin-bottom: 4px;
+        }
+
+        .reservation-message-duration {
+            font-size: 14px;
+            color: #8E8E93;
+        }
+
+        .reservation-message-pricing {
+            text-align: center;
+            padding: 16px 0;
+            border-top: 1px solid #F2F2F7;
+        }
+
+        .reservation-message-total {
+            font-size: 32px;
+            font-weight: 600;
+            color: #1C1C1E;
+            letter-spacing: -1px;
+        }
+
+        .reservation-message-detail {
+            font-size: 14px;
+            color: #8E8E93;
+            margin-top: 4px;
+        }
+
+        .reservation-message-caution {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 8px;
+            font-size: 13px;
+            color: #FF9500;
+            font-weight: 500;
+        }
+
+        .reservation-message-divider {
+            height: 1px;
+            background: #F2F2F7;
+            margin: 16px 0;
+        }
+
+        .reservation-message-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .reservation-action-btn {
+            flex: 1;
+            padding: 14px 12px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .reservation-action-btn:active {
+            transform: scale(0.97);
+        }
+
+        .reservation-action-btn.decline {
+            background: #F2F2F7;
+            color: #1C1C1E;
+        }
+
+        .reservation-action-btn.other-dates {
+            background: #F2F2F7;
+            color: #1C1C1E;
+        }
+
+        .reservation-action-btn.accept {
+            background: #1C1C1E;
+            color: #FFFFFF;
+        }
+
+        .reservation-message-status {
+            text-align: center;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            background: #F2F2F7;
+            color: #1C1C1E;
+        }
+
+        /* Don Message Styles */
+        .don-message {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 16px;
+            margin: 16px 0;
+        }
+
+        .don-message-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .don-message-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #8E8E93;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .don-message-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 0;
+        }
+
+        .don-message-icon {
+            width: 48px;
+            height: 48px;
+            background: #34C75915;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .don-message-icon svg {
+            width: 24px;
+            height: 24px;
+            color: #34C759;
+        }
+
+        .don-message-text {
+            flex: 1;
+            font-size: 17px;
+            font-weight: 500;
+            color: #1C1C1E;
+        }
+
+        .don-message-divider {
+            height: 1px;
+            background: #F2F2F7;
+            margin: 16px 0;
+        }
+
+        .don-message-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .don-action-btn {
+            flex: 1;
+            padding: 14px 12px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .don-action-btn:active {
+            transform: scale(0.97);
+        }
+
+        .don-action-btn.decline {
+            background: #F2F2F7;
+            color: #1C1C1E;
+        }
+
+        .don-action-btn.accept {
+            background: #1C1C1E;
+            color: #FFFFFF;
+        }
+
+        .don-message-status {
+            text-align: center;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            background: #F2F2F7;
+            color: #1C1C1E;
+        }
+
+        .don-message-status.accepted {
+            background: #34C75915;
+            color: #34C759;
+        }
+
+        .don-message-status.declined {
+            background: #FF3B3015;
+            color: #FF3B30;
+        }
+
+        /* Checkout Screen */
+        .checkout-overlay {
+            position: absolute;
+            inset: 0;
+            background: #FFFFFF;
+            z-index: 4000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .checkout-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .checkout-header {
+            position: sticky;
+            top: 0;
+            background: #FFFFFF;
+            padding: 60px 20px 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px solid #F2F2F7;
+            z-index: 10;
+        }
+
+        .checkout-back {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #F2F2F7;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .checkout-back svg {
+            width: 20px;
+            height: 20px;
+            color: #1C1C1E;
+        }
+
+        .checkout-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1C1C1E;
+        }
+
+        .checkout-content {
+            padding: 20px;
+            padding-bottom: 40px;
+        }
+
+        .checkout-section {
+            margin-bottom: 24px;
+        }
+
+        .checkout-section-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #8E8E93;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .checkout-product {
+            display: flex;
+            gap: 16px;
+            padding: 16px;
+            background: #F9F9F9;
+            border-radius: 16px;
+        }
+
+        .checkout-product-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .checkout-product-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .checkout-product-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1C1C1E;
+            margin-bottom: 4px;
+        }
+
+        .checkout-product-seller {
+            font-size: 14px;
+            color: #8E8E93;
+            margin-bottom: 8px;
+        }
+
+        .checkout-product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1C1C1E;
+        }
+
+        .checkout-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checkout-option {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px;
+            background: #FFFFFF;
+            border: 2px solid #E5E5EA;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkout-option.selected {
+            border-color: #1C1C1E;
+            background: #F9F9F9;
+        }
+
+        .checkout-option-radio {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #C7C7CC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .checkout-option.selected .checkout-option-radio {
+            border-color: #1C1C1E;
+            background: #1C1C1E;
+        }
+
+        .checkout-option.selected .checkout-option-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #FFFFFF;
+            border-radius: 50%;
+        }
+
+        .checkout-option-icon {
+            width: 44px;
+            height: 44px;
+            background: #F2F2F7;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkout-option-icon svg {
+            width: 22px;
+            height: 22px;
+            color: #1C1C1E;
+        }
+
+        .checkout-option-content {
+            flex: 1;
+        }
+
+        .checkout-option-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1C1C1E;
+            margin-bottom: 2px;
+        }
+
+        .checkout-option-desc {
+            font-size: 13px;
+            color: #8E8E93;
+        }
+
+        .checkout-option-price {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1C1C1E;
+        }
+
+        .checkout-summary {
+            background: #F9F9F9;
+            border-radius: 16px;
+            padding: 16px;
+        }
+
+        .checkout-summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .checkout-summary-row:not(:last-child) {
+            border-bottom: 1px solid #E5E5EA;
+        }
+
+        .checkout-summary-label {
+            font-size: 15px;
+            color: #8E8E93;
+        }
+
+        .checkout-summary-value {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1C1C1E;
+        }
+
+        .checkout-summary-row.total {
+            padding-top: 14px;
+            border-bottom: none;
+        }
+
+        .checkout-summary-row.total .checkout-summary-label {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1C1C1E;
+        }
+
+        .checkout-summary-row.total .checkout-summary-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1C1C1E;
+        }
+
+        .checkout-footer {
+            padding: 0 20px 20px;
+        }
+
+        .checkout-pay-btn {
+            width: 100%;
+            padding: 16px;
+            background: #1C1C1E;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkout-pay-btn:active {
+            transform: scale(0.98);
+        }
+
+        .checkout-pay-btn.location {
+            background: linear-gradient(135deg, #FF9500 0%, #E68600 100%);
+        }
+
+        .checkout-secure {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #8E8E93;
+        }
+
+        .checkout-secure svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Payment Methods */
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: #FFFFFF;
+            border: 2px solid #E5E5EA;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .payment-method.selected {
+            border-color: #1C1C1E;
+        }
+
+        .payment-method .checkout-option-radio {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #C7C7CC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .payment-method.selected .checkout-option-radio {
+            border-color: #1C1C1E;
+            background: #1C1C1E;
+        }
+
+        .payment-method.selected .checkout-option-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #FFFFFF;
+            border-radius: 50%;
+        }
+
+        .payment-method-logo {
+            height: 24px;
+        }
+
+        .payment-method-info {
+            flex: 1;
+        }
+
+        .payment-method-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1C1C1E;
+        }
+
+        .payment-method-detail {
+            font-size: 13px;
+            color: #8E8E93;
+        }
+
+        .payment-logo-stripe {
+            background: #635BFF;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-style: italic;
+        }
+
+        .payment-logo-apple {
+            background: #000000;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .payment-logo-apple::before {
+            content: '';
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* Service Fee Info */
+        .fee-info-btn {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #E5E5EA;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .fee-info-btn svg {
+            width: 12px;
+            height: 12px;
+            color: #8E8E93;
+        }
+
+        .fee-tooltip {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            transform: translateX(-30%);
+            background: #1C1C1E;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            line-height: 1.4;
+            width: 240px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .fee-tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 40%;
+            border: 8px solid transparent;
+            border-bottom-color: #1C1C1E;
+        }
+
+        .fee-info-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .fee-info-wrapper:hover .fee-tooltip,
+        .fee-info-wrapper.active .fee-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Confirmation Screen */
+        .confirmation-overlay {
+            position: absolute;
+            inset: 0;
+            background: #FFFFFF;
+            z-index: 4500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .confirmation-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .confirmation-icon {
+            width: 100px;
+            height: 100px;
+            background: #34C75915;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            animation: confirmPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes confirmPop {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        .confirmation-icon svg {
+            width: 50px;
+            height: 50px;
+            color: #34C759;
+            stroke-width: 2.5;
+        }
+
+        .confirmation-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1C1C1E;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .confirmation-message {
+            font-size: 16px;
+            color: #8E8E93;
+            text-align: center;
+            max-width: 300px;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+
+        .confirmation-details {
+            width: 100%;
+            max-width: 340px;
+            background: #F9F9F9;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+
+        .confirmation-detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+
+        .confirmation-detail-label {
+            font-size: 14px;
+            color: #8E8E93;
+        }
+
+        .confirmation-detail-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1C1C1E;
+        }
+
+        .confirmation-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .confirmation-btn-primary {
+            width: 100%;
+            padding: 16px;
+            background: #1C1C1E;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .confirmation-btn-secondary {
+            width: 100%;
+            padding: 16px;
+            background: #F2F2F7;
+            color: #1C1C1E;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
         }
 
         /* Quick Actions */
@@ -3709,6 +4897,7 @@
             border: none;
             cursor: pointer;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
         .product-detail-action-btn.vente {
@@ -3719,12 +4908,289 @@
             background: linear-gradient(135deg, #FF9500 0%, #E68600 100%);
         }
 
+        .product-detail-action-btn .btn-subtle {
+            font-weight: 400;
+            opacity: 0.85;
+            font-size: 14px;
+        }
+
         .product-detail-action-btn.don {
             background: linear-gradient(135deg, #34C759 0%, #248A3D 100%);
         }
 
         .product-detail-action-btn:active {
             transform: scale(0.97);
+        }
+
+        /* New layout for Vente/Location buttons (2 rows) */
+        .product-detail-footer.two-rows-layout {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .product-detail-footer .secondary-actions {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .product-detail-footer .secondary-actions .product-detail-message-btn,
+        .product-detail-footer .secondary-actions .product-detail-offer-btn {
+            flex: 1;
+            padding: 14px 12px;
+        }
+
+        .product-detail-offer-btn {
+            flex: 1;
+            padding: 14px 12px;
+            background: #FFFFFF;
+            border: 2px solid #0968E5;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #0968E5;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .product-detail-offer-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .product-detail-offer-btn:active {
+            transform: scale(0.97);
+            background: #F0F7FF;
+        }
+
+        .product-detail-footer .primary-action {
+            width: 100%;
+        }
+
+        .product-detail-footer .primary-action .product-detail-action-btn {
+            width: 100%;
+            flex: none;
+        }
+
+        /* Offer Modal */
+        .offer-modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+            z-index: 3500;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .offer-modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .offer-modal {
+            background: #FFFFFF;
+            border-radius: 24px 24px 0 0;
+            width: 100%;
+            max-width: 100%;
+            padding: 24px;
+            padding-bottom: calc(24px + env(safe-area-inset-bottom, 20px));
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .offer-modal-overlay.visible .offer-modal {
+            transform: translateY(0);
+        }
+
+        .offer-modal-handle {
+            width: 36px;
+            height: 4px;
+            background: #E5E5EA;
+            border-radius: 2px;
+            margin: 0 auto 20px;
+        }
+
+        .offer-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .offer-modal-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1C1C1E;
+        }
+
+        .offer-modal-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #F2F2F7;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .offer-modal-close svg {
+            width: 16px;
+            height: 16px;
+            color: #8E8E93;
+        }
+
+        .offer-product-preview {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            background: #F9F9F9;
+            border-radius: 14px;
+            margin-bottom: 20px;
+        }
+
+        .offer-product-preview img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .offer-product-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .offer-product-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1C1C1E;
+            margin-bottom: 4px;
+        }
+
+        .offer-product-original-price {
+            font-size: 14px;
+            color: #8E8E93;
+        }
+
+        .offer-product-original-price span {
+            font-weight: 600;
+            color: #0968E5;
+        }
+
+        .offer-input-group {
+            margin-bottom: 16px;
+        }
+
+        .offer-input-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1C1C1E;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .offer-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .offer-input {
+            width: 100%;
+            padding: 16px;
+            padding-right: 40px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1C1C1E;
+            border: 2px solid #E5E5EA;
+            border-radius: 14px;
+            text-align: center;
+            transition: border-color 0.2s ease;
+        }
+
+        .offer-input:focus {
+            outline: none;
+            border-color: #0968E5;
+        }
+
+        .offer-input-currency {
+            position: absolute;
+            right: 16px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #8E8E93;
+        }
+
+        .offer-suggestions {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .offer-suggestion-btn {
+            flex: 1;
+            padding: 10px;
+            background: #F2F2F7;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1C1C1E;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .offer-suggestion-btn:hover {
+            background: #E5E5EA;
+        }
+
+        .offer-suggestion-btn.selected {
+            background: #0968E5;
+            color: #FFFFFF;
+        }
+
+        .offer-submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #0968E5 0%, #0050B3 100%);
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .offer-submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .offer-submit-btn:disabled {
+            background: #E5E5EA;
+            color: #8E8E93;
+            cursor: not-allowed;
+        }
+
+        .offer-note {
+            text-align: center;
+            font-size: 12px;
+            color: #8E8E93;
+            margin-top: 12px;
         }
 
         /* Deposit Info for Location */
@@ -5433,6 +6899,44 @@
                         <div class="messages-no-results-text">Essayez un autre terme de recherche</div>
                     </div>
                 </div>
+
+                <!-- Tab Bar -->
+                <nav class="tab-bar messages-tab-bar">
+                    <button class="tab-item" onclick="closeMessages(); selectTab(this)">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        <span class="tab-label">Accueil</span>
+                    </button>
+                    <button class="tab-item" onclick="closeMessages(); openSearch()">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                        <span class="tab-label">Rechercher</span>
+                    </button>
+                    <button class="fab" onclick="closeMessages(); alert('Créer une annonce')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <button class="tab-item active" onclick="selectTab(this)">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/>
+                        </svg>
+                        <span class="tab-label">Messages</span>
+                    </button>
+                    <button class="tab-item" onclick="closeMessages(); selectTab(this)">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 20a6 6 0 0 0-12 0"/>
+                            <circle cx="12" cy="10" r="4"/>
+                            <circle cx="12" cy="12" r="10"/>
+                        </svg>
+                        <span class="tab-label">Profil</span>
+                    </button>
+                </nav>
             </div>
         </div>
 
@@ -5486,8 +6990,9 @@
                     <div class="conversation-product-price vente" id="convProductPrice">35 €</div>
                     <div class="conversation-product-badge vente" id="convProductBadge">Vente</div>
                 </div>
-                <div class="conversation-product-action">
-                    <button class="vente" id="convProductActionBtn">Acheter</button>
+                <div class="conversation-product-action" id="convProductActions">
+                    <button class="vente" id="convProductActionBtn" onclick="event.stopPropagation(); buyFromConversation()">Acheter</button>
+                    <button class="offer-btn" id="convOfferBtn" onclick="event.stopPropagation(); openOfferFromConversation()">Faire une offre</button>
                 </div>
             </div>
 
@@ -5521,6 +7026,288 @@
                         </svg>
                     </button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Offer Modal -->
+        <div class="offer-modal-overlay" id="offerModalOverlay" onclick="closeOfferModal()">
+            <div class="offer-modal" onclick="event.stopPropagation()">
+                <div class="offer-modal-handle"></div>
+                <div class="offer-modal-header">
+                    <h2 class="offer-modal-title">Faire une offre</h2>
+                    <button class="offer-modal-close" onclick="closeOfferModal()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                            <path d="M18 6L6 18"/>
+                            <path d="M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="offer-product-preview">
+                    <img id="offerProductImage" src="" alt="Product">
+                    <div class="offer-product-info">
+                        <div class="offer-product-name" id="offerProductName">Nom du produit</div>
+                        <div class="offer-product-original-price">Prix demandé : <span id="offerOriginalPrice">0 €</span></div>
+                    </div>
+                </div>
+                <div class="offer-input-group">
+                    <label class="offer-input-label">Votre offre</label>
+                    <div class="offer-input-wrapper">
+                        <input type="number" class="offer-input" id="offerPriceInput" placeholder="0" min="1" oninput="validateOffer()">
+                        <span class="offer-input-currency">€</span>
+                    </div>
+                </div>
+                <div class="offer-suggestions" id="offerSuggestions">
+                    <!-- Suggestions will be populated dynamically -->
+                </div>
+                <button class="offer-submit-btn" id="offerSubmitBtn" onclick="submitOffer()" disabled>
+                    Envoyer l'offre
+                </button>
+                <p class="offer-note">Le vendeur pourra accepter, refuser ou vous faire une contre-offre</p>
+            </div>
+        </div>
+
+        <!-- Reservation Modal -->
+        <div class="reservation-modal-overlay" id="reservationModalOverlay" onclick="closeReservationModal()">
+            <div class="reservation-modal" onclick="event.stopPropagation()">
+                <div class="reservation-modal-handle"></div>
+                <div class="reservation-modal-header">
+                    <h2 class="reservation-modal-title">Demander une réservation</h2>
+                    <button class="reservation-modal-close" onclick="closeReservationModal()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                            <path d="M18 6L6 18"/>
+                            <path d="M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="reservation-product-preview">
+                    <img id="reservationProductImage" src="" alt="Product">
+                    <div class="reservation-product-info">
+                        <div class="reservation-product-name" id="reservationProductName">Nom du produit</div>
+                        <div class="reservation-product-price" id="reservationProductPrice">0 €/jour</div>
+                    </div>
+                </div>
+                <div class="reservation-dates-section">
+                    <div class="reservation-section-label">Sélectionnez vos dates</div>
+                    <div class="reservation-dates-inputs">
+                        <div class="reservation-date-input">
+                            <label>Du</label>
+                            <input type="date" id="reservationStartDate" onchange="updateReservationSummary()">
+                        </div>
+                        <div class="reservation-date-input">
+                            <label>Au</label>
+                            <input type="date" id="reservationEndDate" onchange="updateReservationSummary()">
+                        </div>
+                    </div>
+                </div>
+                <div class="reservation-summary" id="reservationSummary" style="display: none;">
+                    <div class="reservation-summary-row">
+                        <span class="reservation-summary-label">Durée</span>
+                        <span class="reservation-summary-value" id="reservationDuration">0 jours</span>
+                    </div>
+                    <div class="reservation-summary-row">
+                        <span class="reservation-summary-label">Prix par jour</span>
+                        <span class="reservation-summary-value" id="reservationPricePerDay">0 €</span>
+                    </div>
+                    <div class="reservation-summary-row total">
+                        <span class="reservation-summary-label">Total location</span>
+                        <span class="reservation-summary-value" id="reservationTotal">0 €</span>
+                    </div>
+                </div>
+                <div class="reservation-caution-info" id="reservationCautionInfo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 16v-4"/>
+                        <path d="M12 8h.01"/>
+                    </svg>
+                    <div class="reservation-caution-text">
+                        Une caution de <strong id="reservationCautionAmount">0 €</strong> sera demandée au moment du retrait et restituée au retour du produit en bon état.
+                    </div>
+                </div>
+                <button class="reservation-submit-btn" id="reservationSubmitBtn" onclick="submitReservation()" disabled>
+                    Envoyer la demande
+                </button>
+            </div>
+        </div>
+
+        <!-- Checkout Screen -->
+        <div class="checkout-overlay" id="checkoutOverlay">
+            <header class="checkout-header">
+                <button class="checkout-back" onclick="closeCheckout()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m15 18-6-6 6-6"/>
+                    </svg>
+                </button>
+                <h1 class="checkout-title" id="checkoutTitle">Paiement</h1>
+            </header>
+
+            <div class="checkout-content">
+                <!-- Product Summary -->
+                <div class="checkout-section">
+                    <div class="checkout-section-title">Article</div>
+                    <div class="checkout-product">
+                        <img class="checkout-product-image" id="checkoutProductImage" src="" alt="Product">
+                        <div class="checkout-product-info">
+                            <div class="checkout-product-name" id="checkoutProductName">Produit</div>
+                            <div class="checkout-product-seller" id="checkoutProductSeller">Vendu par Utilisateur</div>
+                            <div class="checkout-product-price" id="checkoutProductPrice">0 €</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delivery Options (for Vente) -->
+                <div class="checkout-section" id="checkoutDeliverySection">
+                    <div class="checkout-section-title">Livraison</div>
+                    <div class="checkout-options">
+                        <div class="checkout-option selected" onclick="selectDeliveryOption(this, 4.99, 'standard')">
+                            <div class="checkout-option-radio"></div>
+                            <div class="checkout-option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10 17h4V5H2v12h3"/>
+                                    <path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/>
+                                    <circle cx="7.5" cy="17.5" r="2.5"/>
+                                    <circle cx="17.5" cy="17.5" r="2.5"/>
+                                </svg>
+                            </div>
+                            <div class="checkout-option-content">
+                                <div class="checkout-option-title">Livraison standard</div>
+                                <div class="checkout-option-desc">Livré sous 3-5 jours</div>
+                            </div>
+                            <div class="checkout-option-price">4,99 €</div>
+                        </div>
+                        <div class="checkout-option" onclick="selectDeliveryOption(this, 9.99, 'express')">
+                            <div class="checkout-option-radio"></div>
+                            <div class="checkout-option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                            </div>
+                            <div class="checkout-option-content">
+                                <div class="checkout-option-title">Livraison express</div>
+                                <div class="checkout-option-desc">Livré sous 24-48h</div>
+                            </div>
+                            <div class="checkout-option-price">9,99 €</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Details (for Location) -->
+                <div class="checkout-section" id="checkoutLocationSection" style="display: none;">
+                    <div class="checkout-section-title">Détails de la location</div>
+                    <div class="checkout-summary">
+                        <div class="checkout-summary-row">
+                            <span class="checkout-summary-label">Dates</span>
+                            <span class="checkout-summary-value" id="checkoutLocationDates">-</span>
+                        </div>
+                        <div class="checkout-summary-row">
+                            <span class="checkout-summary-label">Durée</span>
+                            <span class="checkout-summary-value" id="checkoutLocationDuration">-</span>
+                        </div>
+                        <div class="checkout-summary-row">
+                            <span class="checkout-summary-label">Caution</span>
+                            <span class="checkout-summary-value" id="checkoutLocationCaution">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="checkout-section">
+                    <div class="checkout-section-title">Moyen de paiement</div>
+                    <div class="checkout-options">
+                        <div class="payment-method selected" onclick="selectPaymentMethod(this)">
+                            <div class="checkout-option-radio"></div>
+                            <div class="payment-logo-stripe">stripe</div>
+                            <div class="payment-method-info">
+                                <div class="payment-method-name">Carte bancaire</div>
+                                <div class="payment-method-detail">Visa, Mastercard, CB</div>
+                            </div>
+                        </div>
+                        <div class="payment-method" onclick="selectPaymentMethod(this)">
+                            <div class="checkout-option-radio"></div>
+                            <div class="payment-logo-apple"> Pay</div>
+                            <div class="payment-method-info">
+                                <div class="payment-method-name">Apple Pay</div>
+                                <div class="payment-method-detail">Paiement rapide</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="checkout-section">
+                    <div class="checkout-section-title">Récapitulatif</div>
+                    <div class="checkout-summary">
+                        <div class="checkout-summary-row">
+                            <span class="checkout-summary-label">Article</span>
+                            <span class="checkout-summary-value" id="checkoutSubtotal">0 €</span>
+                        </div>
+                        <div class="checkout-summary-row" id="checkoutDeliveryRow">
+                            <span class="checkout-summary-label">Livraison</span>
+                            <span class="checkout-summary-value" id="checkoutDeliveryPrice">4,99 €</span>
+                        </div>
+                        <div class="checkout-summary-row" id="checkoutFeesRow">
+                            <span class="checkout-summary-label">
+                                Frais de service
+                                <span class="fee-info-wrapper" onclick="toggleFeeInfo(event)">
+                                    <button class="fee-info-btn">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <path d="M12 16v-4"/>
+                                            <path d="M12 8h.01"/>
+                                        </svg>
+                                    </button>
+                                    <div class="fee-tooltip">
+                                        Ces frais permettent de garantir des transactions sécurisées, un service client réactif et le développement de nouvelles fonctionnalités.
+                                    </div>
+                                </span>
+                            </span>
+                            <span class="checkout-summary-value" id="checkoutFees">0 €</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-footer">
+                <button class="checkout-pay-btn" id="checkoutPayBtn" onclick="processPayment()">
+                    Payer 0 €
+                </button>
+                <div class="checkout-secure">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                    <span>Paiement sécurisé</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Screen -->
+        <div class="confirmation-overlay" id="confirmationOverlay">
+            <div class="confirmation-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6L9 17l-5-5"/>
+                </svg>
+            </div>
+            <h1 class="confirmation-title" id="confirmationTitle">Paiement confirmé !</h1>
+            <p class="confirmation-message" id="confirmationMessage">
+                Votre commande a été validée. Le vendeur a été notifié.
+            </p>
+            <div class="confirmation-details" id="confirmationDetails">
+                <div class="confirmation-detail-row">
+                    <span class="confirmation-detail-label">Numéro de commande</span>
+                    <span class="confirmation-detail-value" id="confirmationOrderId">#SF-28491</span>
+                </div>
+                <div class="confirmation-detail-row">
+                    <span class="confirmation-detail-label">Article</span>
+                    <span class="confirmation-detail-value" id="confirmationProduct">-</span>
+                </div>
+                <div class="confirmation-detail-row">
+                    <span class="confirmation-detail-label">Montant payé</span>
+                    <span class="confirmation-detail-value" id="confirmationAmount">-</span>
+                </div>
+            </div>
+            <div class="confirmation-actions">
+                <button class="confirmation-btn-primary" onclick="goToMessages()">Contacter le vendeur</button>
+                <button class="confirmation-btn-secondary" onclick="closeConfirmation()">Retour à l'accueil</button>
             </div>
         </div>
 
@@ -5753,7 +7540,9 @@
 
             // Generate footer based on type
             const footer = generateProductFooter(type);
-            document.getElementById('productDetailFooter').innerHTML = footer;
+            const footerEl = document.getElementById('productDetailFooter');
+            footerEl.innerHTML = footer;
+            footerEl.classList.toggle('two-rows-layout', type === 'vente');
 
             // Show overlay
             document.getElementById('productDetailOverlay').classList.add('visible');
@@ -6030,11 +7819,18 @@
 
             if (type === 'vente') {
                 return `
-                    <button class="product-detail-message-btn" onclick="contactSeller()">
-                        ${messageIcon}
-                        Message
-                    </button>
-                    <button class="product-detail-action-btn vente" onclick="buyProduct()">Acheter</button>
+                    <div class="secondary-actions">
+                        <button class="product-detail-message-btn" onclick="contactSeller()">
+                            ${messageIcon}
+                            Message
+                        </button>
+                        <button class="product-detail-offer-btn" onclick="openOfferModal()">
+                            Faire une offre
+                        </button>
+                    </div>
+                    <div class="primary-action">
+                        <button class="product-detail-action-btn vente" onclick="buyProduct()">Acheter</button>
+                    </div>
                 `;
             } else if (type === 'location') {
                 return `
@@ -6042,7 +7838,7 @@
                         ${messageIcon}
                         Message
                     </button>
-                    <button class="product-detail-action-btn location" onclick="rentProduct()">Réserver</button>
+                    <button class="product-detail-action-btn location" id="locationReserveBtn" onclick="rentProduct()">Réserver</button>
                 `;
             } else {
                 return `
@@ -6089,6 +7885,7 @@
         function updateLocationPrice() {
             const priceDisplay = document.getElementById('locationPriceDisplay');
             const priceUnit = document.getElementById('locationPriceUnit');
+            const reserveBtn = document.getElementById('locationReserveBtn');
             const grid = document.querySelector('.availability-grid');
 
             if (!priceDisplay || !grid) return;
@@ -6099,10 +7896,13 @@
             if (numDays === 0) {
                 priceDisplay.textContent = pricePerDay + ' €';
                 priceUnit.textContent = '/jour';
+                if (reserveBtn) reserveBtn.innerHTML = 'Réserver';
             } else {
                 const total = pricePerDay * numDays;
                 priceDisplay.textContent = total + ' €';
                 priceUnit.textContent = numDays === 1 ? '(1 jour)' : `(${numDays} jours)`;
+                const daysText = numDays === 1 ? '1 jour' : `${numDays} jours`;
+                if (reserveBtn) reserveBtn.innerHTML = `Réserver · ${total} € <span class="btn-subtle">(${daysText})</span>`;
             }
         }
 
@@ -6145,19 +7945,691 @@
         }
 
         function contactSeller() {
-            alert('Ouverture de la messagerie avec le vendeur...');
+            if (!currentProductData) return;
+
+            // Create dynamic seller conversation based on current product
+            const sellerKey = 'current_seller';
+            conversationData[sellerKey] = {
+                name: 'Vendeur',
+                avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop',
+                online: true,
+                verified: true,
+                product: {
+                    title: currentProductData.title,
+                    image: currentProductData.image,
+                    price: currentProductData.price,
+                    type: currentProductData.type
+                },
+                messages: []
+            };
+
+            closeProductDetail();
+            setTimeout(() => {
+                openConversation(sellerKey);
+            }, 300);
         }
 
         function buyProduct() {
-            alert('Redirection vers le paiement sécurisé...');
+            if (!currentProductData) return;
+            openCheckout('vente', {
+                image: currentProductData.image,
+                name: currentProductData.title,
+                price: parseInt(currentProductData.price.replace(/[^0-9]/g, '')) || 0,
+                seller: 'Julien B.'
+            });
         }
 
         function rentProduct() {
-            alert('Confirmation de la réservation...');
+            // Check if days are selected from the calendar
+            const numDays = selectedDays.length;
+            const grid = document.querySelector('.availability-grid');
+            const pricePerDay = grid ? parseInt(grid.dataset.pricePerDay) || 0 : 0;
+
+            if (numDays === 0) {
+                alert('Veuillez sélectionner au moins un jour dans le calendrier.');
+                return;
+            }
+
+            const total = pricePerDay * numDays;
+            const caution = Math.round(pricePerDay * 5);
+
+            // Format selected days for display
+            const sortedDays = [...selectedDays].sort((a, b) => a - b);
+            const firstDay = sortedDays[0];
+            const lastDay = sortedDays[sortedDays.length - 1];
+
+            // Get current month/year from calendar
+            const monthLabel = document.querySelector('.availability-month')?.textContent || 'Décembre 2024';
+            const monthName = monthLabel.split(' ')[0].substring(0, 3);
+
+            openCheckout('location', {
+                image: currentProductData?.image || '',
+                name: currentProductData?.title || 'Produit',
+                price: total,
+                pricePerDay: pricePerDay,
+                seller: 'Lucas M.',
+                days: numDays,
+                caution: caution,
+                dates: `${firstDay} - ${lastDay} ${monthName}`
+            });
         }
 
         function requestDon() {
-            alert('Votre demande a été envoyée au donneur !');
+            const productName = currentProductData?.title || 'Produit';
+            const productImage = currentProductData?.image || '';
+
+            // Close product detail
+            closeProductDetail();
+
+            // Open conversation and add don request message
+            setTimeout(() => {
+                openConversation('seller');
+                setTimeout(() => {
+                    addDonRequestToConversation(productName);
+                }, 300);
+            }, 300);
+        }
+
+        function addDonRequestToConversation(productName) {
+            const container = document.getElementById('convMessages');
+
+            const donHtml = `
+                <div class="don-message">
+                    <div class="don-message-card" id="latestDonRequest">
+                        <div class="don-message-label">Demande de don</div>
+                        <div class="don-message-content">
+                            <div class="don-message-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                </svg>
+                            </div>
+                            <div class="don-message-text">
+                                Je suis intéressé(e) par votre don
+                            </div>
+                        </div>
+                        <div class="don-message-divider"></div>
+                        <div class="don-message-actions" id="donActions">
+                            <button class="don-action-btn decline" onclick="declineDonRequest(this)">Refuser</button>
+                            <button class="don-action-btn accept" onclick="acceptDonRequest(this)">Accepter</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            container.insertAdjacentHTML('beforeend', donHtml);
+
+            setTimeout(() => {
+                container.scrollTop = container.scrollHeight;
+            }, 100);
+        }
+
+        function acceptDonRequest(btn) {
+            const card = btn.closest('.don-message-card');
+            const actionsDiv = card.querySelector('.don-message-actions');
+            const divider = card.querySelector('.don-message-divider');
+
+            if (divider) divider.remove();
+            actionsDiv.outerHTML = `
+                <div class="don-message-status accepted">
+                    Demande acceptée
+                </div>
+            `;
+
+            setTimeout(() => {
+                addSystemMessage("Vous pouvez maintenant convenir d'un lieu de retrait.");
+            }, 500);
+        }
+
+        function declineDonRequest(btn) {
+            const card = btn.closest('.don-message-card');
+            const actionsDiv = card.querySelector('.don-message-actions');
+            const divider = card.querySelector('.don-message-divider');
+
+            if (divider) divider.remove();
+            actionsDiv.outerHTML = `
+                <div class="don-message-status declined">
+                    Demande refusée
+                </div>
+            `;
+        }
+
+        // Offer Modal Functions
+        let currentOfferOriginalPrice = 0;
+
+        function openOfferModal(productData = null) {
+            // Use passed data or currentProductData
+            const data = productData || currentProductData;
+            if (!data) return;
+
+            // Get product data
+            const productImage = data.image || '';
+            const productName = data.title || 'Produit';
+            const priceText = data.price || '0 €';
+            const originalPrice = parseInt(priceText.replace(/[^0-9]/g, '')) || 0;
+            currentOfferOriginalPrice = originalPrice;
+
+            // Populate modal
+            document.getElementById('offerProductImage').src = productImage;
+            document.getElementById('offerProductName').textContent = productName;
+            document.getElementById('offerOriginalPrice').textContent = priceText;
+            document.getElementById('offerPriceInput').value = '';
+            document.getElementById('offerSubmitBtn').disabled = true;
+            document.getElementById('offerSubmitBtn').textContent = 'Envoyer l\'offre';
+
+            // Generate price suggestions (-5%, -10%, -15%)
+            const suggestions = [
+                { percent: 5, price: Math.round(originalPrice * 0.95) },
+                { percent: 10, price: Math.round(originalPrice * 0.90) },
+                { percent: 15, price: Math.round(originalPrice * 0.85) }
+            ];
+
+            const suggestionsHtml = suggestions.map(s => `
+                <button class="offer-suggestion-btn" onclick="selectOfferSuggestion(${s.price}, this)">
+                    -${s.percent}%<br><strong>${s.price} €</strong>
+                </button>
+            `).join('');
+
+            document.getElementById('offerSuggestions').innerHTML = suggestionsHtml;
+
+            // Show modal
+            document.getElementById('offerModalOverlay').classList.add('visible');
+        }
+
+        function closeOfferModal() {
+            document.getElementById('offerModalOverlay').classList.remove('visible');
+        }
+
+        function selectOfferSuggestion(price, btn) {
+            // Update input
+            document.getElementById('offerPriceInput').value = price;
+
+            // Update button styles
+            document.querySelectorAll('.offer-suggestion-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+
+            // Validate
+            validateOffer();
+        }
+
+        function validateOffer() {
+            const input = document.getElementById('offerPriceInput');
+            const submitBtn = document.getElementById('offerSubmitBtn');
+            const value = parseInt(input.value) || 0;
+
+            // Remove selection from suggestions if manually typed
+            if (document.activeElement === input) {
+                document.querySelectorAll('.offer-suggestion-btn').forEach(b => b.classList.remove('selected'));
+            }
+
+            // Enable submit if value > 0
+            submitBtn.disabled = value <= 0;
+
+            // Calculate discount percentage
+            let discountText = '';
+            if (value > 0 && currentOfferOriginalPrice > 0) {
+                const discount = Math.round(((currentOfferOriginalPrice - value) / currentOfferOriginalPrice) * 100);
+                if (discount > 0) {
+                    discountText = ` (-${discount}%)`;
+                } else if (discount < 0) {
+                    discountText = ` (+${Math.abs(discount)}%)`;
+                }
+            }
+
+            // Update button text with price and discount
+            if (value > 0) {
+                submitBtn.textContent = `Envoyer l'offre de ${value} €${discountText}`;
+            } else {
+                submitBtn.textContent = 'Envoyer l\'offre';
+            }
+        }
+
+        function submitOffer() {
+            const offerPrice = parseInt(document.getElementById('offerPriceInput').value) || 0;
+            const productName = document.getElementById('offerProductName').textContent;
+            const originalPrice = currentOfferOriginalPrice;
+
+            if (offerPrice <= 0) return;
+
+            // Calculate discount
+            const discount = Math.round(((originalPrice - offerPrice) / originalPrice) * 100);
+            let discountText = '';
+            if (discount > 0) {
+                discountText = `-${discount}%`;
+            } else if (discount < 0) {
+                discountText = `+${Math.abs(discount)}%`;
+            }
+
+            // Close modal
+            closeOfferModal();
+
+            // Check if conversation is already open
+            const conversationOverlay = document.getElementById('conversationOverlay');
+            const isConversationOpen = conversationOverlay.classList.contains('visible');
+
+            if (isConversationOpen) {
+                // Already in a conversation, just add the offer message
+                addOfferMessageToConversation(offerPrice, originalPrice, discountText, productName);
+            } else {
+                // Close product detail if open
+                closeProductDetail();
+
+                // Create dynamic seller conversation
+                const sellerKey = 'current_seller';
+                if (currentProductData) {
+                    conversationData[sellerKey] = {
+                        name: 'Vendeur',
+                        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop',
+                        online: true,
+                        verified: true,
+                        product: {
+                            title: currentProductData.title,
+                            image: currentProductData.image,
+                            price: currentProductData.price,
+                            type: currentProductData.type
+                        },
+                        messages: []
+                    };
+                }
+
+                // Open conversation and add offer message
+                setTimeout(() => {
+                    openConversation(sellerKey);
+                    setTimeout(() => {
+                        addOfferMessageToConversation(offerPrice, originalPrice, discountText, productName);
+                    }, 300);
+                }, 300);
+            }
+        }
+
+        function addOfferMessageToConversation(offerPrice, originalPrice, discountText, productName) {
+            const container = document.getElementById('convMessages');
+
+            const offerHtml = `
+                <div class="offer-message">
+                    <div class="offer-message-card" id="latestOffer">
+                        <div class="offer-message-label">Offre envoyée</div>
+                        <div class="offer-message-amount">
+                            <div class="offer-message-price">${offerPrice} €</div>
+                            <div class="offer-message-detail">
+                                ${discountText ? `<span class="discount">${discountText}</span><span>•</span>` : ''}
+                                <span class="original">${originalPrice} €</span>
+                            </div>
+                        </div>
+                        <div class="offer-message-divider"></div>
+                        <div class="offer-message-actions" id="offerActions">
+                            <button class="offer-action-btn decline" onclick="declineOffer(this)">Refuser</button>
+                            <button class="offer-action-btn counter" onclick="counterOffer(this, ${offerPrice})">Contre-offre</button>
+                            <button class="offer-action-btn accept" onclick="acceptOffer(this, ${offerPrice})">Accepter</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            container.insertAdjacentHTML('beforeend', offerHtml);
+
+            // Scroll to bottom
+            setTimeout(() => {
+                container.scrollTop = container.scrollHeight;
+            }, 100);
+        }
+
+        function acceptOffer(btn, price) {
+            const card = btn.closest('.offer-message-card');
+            const actionsDiv = card.querySelector('.offer-message-actions');
+            const divider = card.querySelector('.offer-message-divider');
+
+            if (divider) divider.remove();
+            actionsDiv.outerHTML = `
+                <div class="offer-message-status accepted">
+                    Offre acceptée
+                </div>
+            `;
+
+            // Add system message
+            setTimeout(() => {
+                addSystemMessage('Vous pouvez maintenant procéder au paiement.');
+            }, 500);
+        }
+
+        function declineOffer(btn) {
+            const card = btn.closest('.offer-message-card');
+            const actionsDiv = card.querySelector('.offer-message-actions');
+            const divider = card.querySelector('.offer-message-divider');
+
+            if (divider) divider.remove();
+            actionsDiv.outerHTML = `
+                <div class="offer-message-status declined">
+                    Offre refusée
+                </div>
+            `;
+
+            // Add system message
+            setTimeout(() => {
+                addSystemMessage('Vous pouvez faire une nouvelle proposition.');
+            }, 500);
+        }
+
+        function counterOffer(btn, originalOffer) {
+            const counterPrice = prompt(`Votre contre-proposition (offre reçue : ${originalOffer} €)`);
+
+            if (counterPrice && !isNaN(counterPrice) && parseInt(counterPrice) > 0) {
+                const card = btn.closest('.offer-message-card');
+                const actionsDiv = card.querySelector('.offer-message-actions');
+                const divider = card.querySelector('.offer-message-divider');
+
+                if (divider) divider.remove();
+                actionsDiv.outerHTML = `
+                    <div class="offer-message-status countered">
+                        Contre-offre envoyée · ${parseInt(counterPrice)} €
+                    </div>
+                `;
+
+                // Add counter offer message
+                setTimeout(() => {
+                    addCounterOfferMessage(parseInt(counterPrice), originalOffer);
+                }, 500);
+            }
+        }
+
+        function addCounterOfferMessage(counterPrice, originalOffer) {
+            const container = document.getElementById('convMessages');
+
+            const counterHtml = `
+                <div class="offer-message">
+                    <div class="offer-message-card">
+                        <div class="offer-message-label">Contre-proposition</div>
+                        <div class="offer-message-amount">
+                            <div class="offer-message-price">${counterPrice} €</div>
+                            <div class="offer-message-detail">
+                                <span class="original">${originalOffer} €</span>
+                            </div>
+                        </div>
+                        <div class="offer-message-divider"></div>
+                        <div class="offer-message-actions">
+                            <button class="offer-action-btn decline" onclick="declineOffer(this)">Refuser</button>
+                            <button class="offer-action-btn counter" onclick="counterOffer(this, ${counterPrice})">Contre-offre</button>
+                            <button class="offer-action-btn accept" onclick="acceptOffer(this, ${counterPrice})">Accepter</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            container.insertAdjacentHTML('beforeend', counterHtml);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function addSystemMessage(text) {
+            const container = document.getElementById('convMessages');
+
+            const msgHtml = `
+                <div class="message-bubble-wrapper received">
+                    <div class="message-bubble" style="background: #F2F2F7; color: #1C1C1E; font-size: 13px;">
+                        ${text}
+                    </div>
+                </div>
+            `;
+
+            container.insertAdjacentHTML('beforeend', msgHtml);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function openOfferFromConversation() {
+            if (!window.currentConversationProduct) return;
+
+            const product = window.currentConversationProduct;
+            openOfferModal({
+                image: product.image,
+                title: product.title,
+                price: product.price
+            });
+        }
+
+        function buyFromConversation() {
+            if (!window.currentConversationProduct) return;
+
+            const product = window.currentConversationProduct;
+            openCheckout('vente', {
+                image: product.image,
+                name: product.title,
+                price: parseInt(product.price.replace(/[^0-9]/g, '')) || 0,
+                seller: document.getElementById('convUserName')?.textContent || 'Vendeur'
+            });
+        }
+
+        // Reservation Modal Functions
+        let currentReservationData = {
+            pricePerDay: 0,
+            caution: 0,
+            productName: '',
+            productImage: ''
+        };
+
+        function openReservationModal(productData = null) {
+            const data = productData || currentProductData;
+            if (!data) return;
+
+            // Get product data
+            const productImage = data.image || '';
+            const productName = data.title || 'Produit';
+            const priceText = data.price || '0 €';
+            const pricePerDay = parseInt(priceText.replace(/[^0-9]/g, '')) || 0;
+            // Simulate caution (in real app, this would come from database)
+            const caution = Math.round(pricePerDay * 5); // Caution = 5x daily price
+
+            currentReservationData = {
+                pricePerDay,
+                caution,
+                productName,
+                productImage
+            };
+
+            // Populate modal
+            document.getElementById('reservationProductImage').src = productImage;
+            document.getElementById('reservationProductName').textContent = productName;
+            document.getElementById('reservationProductPrice').textContent = pricePerDay + ' €/jour';
+            document.getElementById('reservationCautionAmount').textContent = caution + ' €';
+
+            // Reset dates
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const dayAfter = new Date(today);
+            dayAfter.setDate(dayAfter.getDate() + 2);
+
+            document.getElementById('reservationStartDate').value = tomorrow.toISOString().split('T')[0];
+            document.getElementById('reservationStartDate').min = tomorrow.toISOString().split('T')[0];
+            document.getElementById('reservationEndDate').value = dayAfter.toISOString().split('T')[0];
+            document.getElementById('reservationEndDate').min = dayAfter.toISOString().split('T')[0];
+
+            // Update summary
+            updateReservationSummary();
+
+            // Show modal
+            document.getElementById('reservationModalOverlay').classList.add('visible');
+        }
+
+        function closeReservationModal() {
+            document.getElementById('reservationModalOverlay').classList.remove('visible');
+        }
+
+        function updateReservationSummary() {
+            const startDate = new Date(document.getElementById('reservationStartDate').value);
+            const endDate = new Date(document.getElementById('reservationEndDate').value);
+
+            // Update end date min
+            document.getElementById('reservationEndDate').min = document.getElementById('reservationStartDate').value;
+
+            if (startDate && endDate && endDate > startDate) {
+                const days = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+                const total = days * currentReservationData.pricePerDay;
+
+                document.getElementById('reservationDuration').textContent = days + (days > 1 ? ' jours' : ' jour');
+                document.getElementById('reservationPricePerDay').textContent = currentReservationData.pricePerDay + ' €';
+                document.getElementById('reservationTotal').textContent = total + ' €';
+
+                document.getElementById('reservationSummary').style.display = 'block';
+                document.getElementById('reservationSubmitBtn').disabled = false;
+                document.getElementById('reservationSubmitBtn').textContent = `Envoyer la demande · ${total} €`;
+            } else {
+                document.getElementById('reservationSummary').style.display = 'none';
+                document.getElementById('reservationSubmitBtn').disabled = true;
+                document.getElementById('reservationSubmitBtn').textContent = 'Envoyer la demande';
+            }
+        }
+
+        function submitReservation() {
+            const startDate = new Date(document.getElementById('reservationStartDate').value);
+            const endDate = new Date(document.getElementById('reservationEndDate').value);
+
+            if (!startDate || !endDate || endDate <= startDate) return;
+
+            const days = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+            const total = days * currentReservationData.pricePerDay;
+
+            // Format dates for display
+            const options = { day: 'numeric', month: 'short' };
+            const startFormatted = startDate.toLocaleDateString('fr-FR', options);
+            const endFormatted = endDate.toLocaleDateString('fr-FR', options);
+
+            // Close modal
+            closeReservationModal();
+
+            // Check if conversation is open
+            const conversationOverlay = document.getElementById('conversationOverlay');
+            const isConversationOpen = conversationOverlay.classList.contains('visible');
+
+            // Add reservation message to conversation
+            setTimeout(() => {
+                addReservationMessageToConversation(startFormatted, endFormatted, days, total, currentReservationData.pricePerDay, currentReservationData.caution);
+            }, isConversationOpen ? 100 : 400);
+
+            // If from product detail, open conversation
+            if (!isConversationOpen && window.currentConversationProduct) {
+                openConversation('seller');
+            }
+        }
+
+        function addReservationMessageToConversation(startDate, endDate, days, total, pricePerDay, caution) {
+            const container = document.getElementById('convMessages');
+
+            const reservationHtml = `
+                <div class="reservation-message">
+                    <div class="reservation-message-card" id="latestReservation">
+                        <div class="reservation-message-label">Demande de réservation</div>
+                        <div class="reservation-message-dates">
+                            <div class="reservation-message-period">${startDate} - ${endDate}</div>
+                            <div class="reservation-message-duration">${days} ${days > 1 ? 'jours' : 'jour'}</div>
+                        </div>
+                        <div class="reservation-message-pricing">
+                            <div class="reservation-message-total">${total} €</div>
+                            <div class="reservation-message-detail">${pricePerDay} € × ${days} ${days > 1 ? 'jours' : 'jour'}</div>
+                            <div class="reservation-message-caution">Caution : ${caution} €</div>
+                        </div>
+                        <div class="reservation-message-divider"></div>
+                        <div class="reservation-message-actions" id="reservationActions">
+                            <button class="reservation-action-btn decline" onclick="declineReservation(this)">Refuser</button>
+                            <button class="reservation-action-btn other-dates" onclick="proposeOtherDates(this)">Autres dates</button>
+                            <button class="reservation-action-btn accept" onclick="acceptReservation(this, ${total}, ${caution})">Accepter</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            container.insertAdjacentHTML('beforeend', reservationHtml);
+
+            setTimeout(() => {
+                container.scrollTop = container.scrollHeight;
+            }, 100);
+        }
+
+        function acceptReservation(btn, total, caution) {
+            const card = btn.closest('.reservation-message-card');
+            const actionsDiv = card.querySelector('.reservation-message-actions');
+            const divider = card.querySelector('.reservation-message-divider');
+
+            if (divider) divider.remove();
+            actionsDiv.outerHTML = `
+                <div class="reservation-message-status">
+                    Réservation confirmée
+                </div>
+            `;
+
+            setTimeout(() => {
+                addSystemMessage('La réservation est confirmée. Convenez du lieu et de l\'heure de remise.');
+            }, 500);
+        }
+
+        function declineReservation(btn) {
+            const card = btn.closest('.reservation-message-card');
+            const actionsDiv = card.querySelector('.reservation-message-actions');
+            const divider = card.querySelector('.reservation-message-divider');
+
+            if (divider) divider.remove();
+            actionsDiv.outerHTML = `
+                <div class="reservation-message-status" style="color: #8E8E93;">
+                    Réservation refusée
+                </div>
+            `;
+
+            setTimeout(() => {
+                addSystemMessage('La réservation a été refusée. Vous pouvez proposer d\'autres dates.');
+            }, 500);
+        }
+
+        function proposeOtherDates(btn) {
+            const newDates = prompt('Proposer d\'autres dates (ex: 20-25 janvier) :');
+
+            if (newDates && newDates.trim()) {
+                const card = btn.closest('.reservation-message-card');
+                const actionsDiv = card.querySelector('.reservation-message-actions');
+                const divider = card.querySelector('.reservation-message-divider');
+
+                if (divider) divider.remove();
+                actionsDiv.outerHTML = `
+                    <div class="reservation-message-status">
+                        Autres dates proposées
+                    </div>
+                `;
+
+                setTimeout(() => {
+                    addOtherDatesMessage(newDates.trim());
+                }, 500);
+            }
+        }
+
+        function addOtherDatesMessage(dates) {
+            const container = document.getElementById('convMessages');
+
+            const msgHtml = `
+                <div class="reservation-message">
+                    <div class="reservation-message-card">
+                        <div class="reservation-message-label">Contre-proposition</div>
+                        <div class="reservation-message-dates">
+                            <div class="reservation-message-period">${dates}</div>
+                            <div class="reservation-message-duration">Nouvelles dates proposées</div>
+                        </div>
+                        <div class="reservation-message-divider"></div>
+                        <div class="reservation-message-actions">
+                            <button class="reservation-action-btn decline" onclick="declineReservation(this)">Refuser</button>
+                            <button class="reservation-action-btn accept" onclick="acceptReservation(this, 0, 0)">Accepter</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            container.insertAdjacentHTML('beforeend', msgHtml);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function openReservationFromConversation() {
+            if (!window.currentConversationProduct) return;
+
+            const product = window.currentConversationProduct;
+            openReservationModal({
+                image: product.image,
+                title: product.title,
+                price: product.price
+            });
         }
 
         function selectImageOption(el, type) {
@@ -6423,6 +8895,13 @@
                 actionBtn.textContent = 'Récupérer';
             }
 
+            // Show/hide offer button for vente only
+            const offerBtn = document.getElementById('convOfferBtn');
+            offerBtn.style.display = product.type === 'vente' ? 'block' : 'none';
+
+            // Store current conversation product data
+            window.currentConversationProduct = product;
+
             // Render messages
             renderConversationMessages(data.messages);
 
@@ -6462,24 +8941,21 @@
 
             if (type === 'vente') {
                 actions = [
-                    { text: '💰 Faire une offre', action: 'makeOffer()' },
+                    { text: '📍 Toujours disponible ?', action: 'askAvailability()' },
                     { text: '📷 Plus de photos', action: 'askMorePhotos()' },
-                    { text: '📦 État du produit ?', action: 'askCondition()' },
-                    { text: '🚚 Livraison possible ?', action: 'askDelivery()' }
+                    { text: '📦 État du produit ?', action: 'askCondition()' }
                 ];
             } else if (type === 'location') {
                 actions = [
-                    { text: '📅 Voir disponibilités', action: 'viewAvailability()' },
-                    { text: '⏰ Durée de location', action: 'askDuration()' },
-                    { text: '💳 Montant caution ?', action: 'askCaution()' },
-                    { text: '📍 Lieu de remise', action: 'askPickupLocation()' }
+                    { text: '📍 Lieu de retrait ?', action: 'askPickupLocation()' },
+                    { text: '📷 Plus de photos', action: 'askMorePhotos()' },
+                    { text: '📦 État du produit ?', action: 'askCondition()' }
                 ];
             } else {
                 actions = [
-                    { text: '✅ Toujours dispo ?', action: 'askAvailability()' },
-                    { text: '📍 Où récupérer ?', action: 'askPickupLocation()' },
-                    { text: '📦 État de l\'objet ?', action: 'askCondition()' },
-                    { text: '🙏 Merci !', action: 'sayThanks()' }
+                    { text: '📍 Toujours disponible ?', action: 'askAvailability()' },
+                    { text: '📷 Plus de photos', action: 'askMorePhotos()' },
+                    { text: '📦 État du produit ?', action: 'askCondition()' }
                 ];
             }
 
@@ -6545,12 +9021,9 @@
         }
 
         // Quick action functions - VENTE
-        function makeOffer() {
-            document.getElementById('convMessageInput').value = 'Seriez-vous ouvert à une offre de € ?';
+        function askAvailability() {
+            document.getElementById('convMessageInput').value = 'Bonjour, est-ce que le produit est toujours disponible ?';
             document.getElementById('convMessageInput').focus();
-            // Position cursor before €
-            const input = document.getElementById('convMessageInput');
-            input.setSelectionRange(input.value.indexOf('€') - 1, input.value.indexOf('€') - 1);
         }
 
         function askMorePhotos() {
@@ -6558,34 +9031,14 @@
             document.getElementById('convMessageInput').focus();
         }
 
-        function askDelivery() {
-            document.getElementById('convMessageInput').value = 'Est-ce que la livraison est possible ?';
+        function askPickupLocation() {
+            document.getElementById('convMessageInput').value = 'Où peut-on se retrouver pour le retrait ?';
             document.getElementById('convMessageInput').focus();
         }
 
         // Quick action functions - LOCATION
-        function viewAvailability() {
-            alert('Afficher le calendrier de disponibilité...');
-        }
-
-        function askDuration() {
-            document.getElementById('convMessageInput').value = 'Je souhaiterais louer pour combien de jours maximum ?';
-            document.getElementById('convMessageInput').focus();
-        }
-
-        function askCaution() {
-            document.getElementById('convMessageInput').value = 'Quel est le montant de la caution ?';
-            document.getElementById('convMessageInput').focus();
-        }
-
-        function askPickupLocation() {
-            document.getElementById('convMessageInput').value = 'Où puis-je venir récupérer l\'article ?';
-            document.getElementById('convMessageInput').focus();
-        }
-
-        // Quick action functions - DON
-        function askAvailability() {
-            document.getElementById('convMessageInput').value = 'Bonjour ! L\'article est-il toujours disponible ?';
+        function askDatesAvailability() {
+            document.getElementById('convMessageInput').value = 'Bonjour, le produit est-il disponible du ... au ... ?';
             document.getElementById('convMessageInput').focus();
         }
 
@@ -6631,7 +9084,9 @@
 
             // Generate footer based on type
             const footer = generateProductFooter(type);
-            document.getElementById('productDetailFooter').innerHTML = footer;
+            const footerEl = document.getElementById('productDetailFooter');
+            footerEl.innerHTML = footer;
+            footerEl.classList.toggle('two-rows-layout', type === 'vente');
 
             // Show overlay
             document.getElementById('productDetailOverlay').classList.add('visible');
@@ -6872,7 +9327,9 @@
 
             // Generate footer based on type
             const footer = generateProductFooter(type);
-            document.getElementById('productDetailFooter').innerHTML = footer;
+            const footerEl = document.getElementById('productDetailFooter');
+            footerEl.innerHTML = footer;
+            footerEl.classList.toggle('two-rows-layout', type === 'vente');
 
             // Show overlay
             document.getElementById('productDetailOverlay').classList.add('visible');
@@ -6901,6 +9358,153 @@
 
         function openAllCategories() {
             document.querySelector('.all-categories-overlay').classList.add('visible');
+        }
+
+        // ====== CHECKOUT FUNCTIONS ======
+        let currentCheckoutData = {
+            type: 'vente',
+            product: {},
+            deliveryFee: 4.99,
+            serviceFee: 0
+        };
+
+        function openCheckout(type, productData) {
+            currentCheckoutData.type = type;
+            currentCheckoutData.product = productData;
+
+            // Close product detail
+            closeProductDetail();
+
+            // Set title based on type
+            document.getElementById('checkoutTitle').textContent = type === 'location' ? 'Réservation' : 'Paiement';
+
+            // Populate product info
+            document.getElementById('checkoutProductImage').src = productData.image;
+            document.getElementById('checkoutProductName').textContent = productData.name;
+            document.getElementById('checkoutProductSeller').textContent = type === 'location' ? `Proposé par ${productData.seller}` : `Vendu par ${productData.seller}`;
+            document.getElementById('checkoutProductPrice').textContent = productData.price + ' €';
+
+            // Show/hide sections based on type
+            if (type === 'location') {
+                document.getElementById('checkoutDeliverySection').style.display = 'none';
+                document.getElementById('checkoutLocationSection').style.display = 'block';
+                document.getElementById('checkoutDeliveryRow').style.display = 'none';
+                document.getElementById('checkoutLocationDates').textContent = productData.dates;
+                document.getElementById('checkoutLocationDuration').textContent = productData.days + (productData.days > 1 ? ' jours' : ' jour');
+                document.getElementById('checkoutLocationCaution').textContent = productData.caution + ' € (remboursable)';
+                document.getElementById('checkoutPayBtn').className = 'checkout-pay-btn location';
+                currentCheckoutData.deliveryFee = 0;
+            } else {
+                document.getElementById('checkoutDeliverySection').style.display = 'block';
+                document.getElementById('checkoutLocationSection').style.display = 'none';
+                document.getElementById('checkoutDeliveryRow').style.display = 'flex';
+                document.getElementById('checkoutPayBtn').className = 'checkout-pay-btn';
+                currentCheckoutData.deliveryFee = 4.99;
+            }
+
+            // Calculate fees (2% service fee)
+            const serviceFee = Math.round(productData.price * 0.02 * 100) / 100;
+            currentCheckoutData.serviceFee = serviceFee;
+
+            // Update summary
+            updateCheckoutSummary();
+
+            // Show checkout
+            setTimeout(() => {
+                document.getElementById('checkoutOverlay').classList.add('visible');
+            }, 300);
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutOverlay').classList.remove('visible');
+        }
+
+        function toggleFeeInfo(event) {
+            event.stopPropagation();
+            const wrapper = event.currentTarget;
+            wrapper.classList.toggle('active');
+
+            // Close when clicking outside
+            setTimeout(() => {
+                document.addEventListener('click', function closeFeeInfo(e) {
+                    if (!wrapper.contains(e.target)) {
+                        wrapper.classList.remove('active');
+                        document.removeEventListener('click', closeFeeInfo);
+                    }
+                });
+            }, 10);
+        }
+
+        function selectCheckoutOption(element, option) {
+            const parent = element.parentElement;
+            parent.querySelectorAll('.checkout-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+
+            if (option === 'delivery') {
+                currentCheckoutData.deliveryFee = 4.99;
+                document.getElementById('checkoutDeliveryPrice').textContent = '4,99 €';
+            } else {
+                currentCheckoutData.deliveryFee = 0;
+                document.getElementById('checkoutDeliveryPrice').textContent = 'Gratuit';
+            }
+
+            updateCheckoutSummary();
+        }
+
+        function selectPaymentMethod(element) {
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function selectDeliveryOption(element, price, type) {
+            const parent = element.parentElement;
+            parent.querySelectorAll('.checkout-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+
+            currentCheckoutData.deliveryFee = price;
+            document.getElementById('checkoutDeliveryPrice').textContent = price.toFixed(2).replace('.', ',') + ' €';
+            updateCheckoutSummary();
+        }
+
+        function updateCheckoutSummary() {
+            const price = currentCheckoutData.product.price || 0;
+            const delivery = currentCheckoutData.deliveryFee;
+            const fees = currentCheckoutData.serviceFee;
+            const total = price + delivery + fees;
+
+            document.getElementById('checkoutSubtotal').textContent = price + ' €';
+            document.getElementById('checkoutFees').textContent = fees.toFixed(2).replace('.', ',') + ' €';
+            document.getElementById('checkoutPayBtn').textContent = `Payer ${total.toFixed(2).replace('.', ',')} €`;
+        }
+
+        function processPayment() {
+            const total = currentCheckoutData.product.price + currentCheckoutData.deliveryFee + currentCheckoutData.serviceFee;
+
+            // Show confirmation
+            document.getElementById('confirmationTitle').textContent = currentCheckoutData.type === 'location' ? 'Réservation confirmée !' : 'Paiement confirmé !';
+            document.getElementById('confirmationMessage').textContent = currentCheckoutData.type === 'location'
+                ? 'Votre réservation a été validée. Le propriétaire a été notifié.'
+                : 'Votre commande a été validée. Le vendeur a été notifié.';
+            document.getElementById('confirmationOrderId').textContent = '#SF-' + Math.floor(10000 + Math.random() * 90000);
+            document.getElementById('confirmationProduct').textContent = currentCheckoutData.product.name;
+            document.getElementById('confirmationAmount').textContent = total.toFixed(2).replace('.', ',') + ' €';
+
+            // Close checkout and show confirmation
+            closeCheckout();
+            setTimeout(() => {
+                document.getElementById('confirmationOverlay').classList.add('visible');
+            }, 300);
+        }
+
+        function closeConfirmation() {
+            document.getElementById('confirmationOverlay').classList.remove('visible');
+        }
+
+        function goToMessages() {
+            closeConfirmation();
+            setTimeout(() => {
+                openConversation('seller');
+            }, 300);
         }
 
         function closeAllCategories() {
